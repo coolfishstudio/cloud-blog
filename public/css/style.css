@@ -91,6 +91,8 @@ footer{overflow: hidden;margin-left: 45px;padding: 8px 0 10px 25%;border-top: 1p
 footer .footer-l{margin-left: 25px;float: left;}
 footer .footer-r{float: right;margin-right: 25px;}
 footer .footer-r i{font-size: 30px;margin-left: 2px;}
+footer .footer-r a{transition: color linear 0.2s;}
+footer .footer-r a:hover{color: #009966;}
 
 /* 涉及到的运动 */
 /* ‘随便’的移动 用在了首页左侧面板 */
