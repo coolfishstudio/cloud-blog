@@ -205,33 +205,60 @@
 		<div class="index-page-box">
             <a class="next" href="###"><i>点击查看更多</i></a>
         </div>
-        <div class="top-box">
-            <a href="###"><i>Top</i></a>
-        </div>
   	</div><!-- rightCont end -->
-    <footer>
-        <div class="footer-l">
-            <p>
-                <a href="###" target="_blank">关于酷鱼</a> |
-                <a href="###" target="_blank">联系我们</a> |
-                <a href="###" target="_blank">开发日志</a> |
-                <a href="###" target="_blank">帮助中心</a>
-            </p>
-            <p>©2014-2019 <a href="/" target="_blank">酷鱼网</a> / 京ICP备14019006号</p>
+    <div class="layer"></div>
+    <div class="layerLogin">
+        <div class="lgn">
+            <div class="layer_logo">- 酷鱼网 -</div>
+            <div class="login">
+                <div class="login_line">
+                </div>
+                <div class="user_login">
+                    <ul>
+                        <li class="bor">
+                            <span>邮　箱</span>
+                            <input id="txt_email_reg" type="text" value="">
+                        </li>
+                        <li>
+                            <span>密　码</span>
+                            <input type="password" value="">
+                        </li>
+                    </ul>
+                </div>
+                <a href="###" class="aLogin">登　录</a>
+                <p class="login_reg">
+                    <a href="###">忘记密码</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="###">账号注册</a>
+                </p>
+            </div>
+            <div class="regBor">
+            </div>
+            <div class="regBor">
+            </div>
+            <a href="###" class="login_close" id="loginCloseBtn"><i class="icon-remove"></i></a>
         </div>
-
-        <div class="footer-r">
-            关注我们:
-            <a href="###" target="_blank">
-                <i class="icon-github"></i>
-            </a>
-            <a href="###" target="_blank">
-                <i class="icon-comments"></i>
-            </a>
-            <a href="###" target="_blank">
-                <i class="icon-envelope"></i>
-            </a>
-        </div>
-
-        </footer>
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            //打开登录面板
+            $('#loginOpenBtn').click(function(){
+                $('.layer').show();
+                $('.layerLogin').show();
+                setTimeout(function(){
+                    $('.layer').css('opacity', '1');
+                    $('.layerLogin').css({'opacity': '1','transform': 'scale(1)'});
+                },100);
+            });
+            //关闭登录面板
+            $('#loginCloseBtn').click(function(){
+                $('.layer').css('opacity', '0');
+                $('.layerLogin').css({'opacity': '0','transform': 'scale(5)'});                
+                setTimeout(function(){
+                    $('.layer').hide();
+                    $('.layerLogin').hide();
+                },1000);
+            });
+        });
+    </script>
 <%- include footer %>
