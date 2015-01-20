@@ -99,7 +99,7 @@ footer .footer-r a{transition: color linear 0.2s;}
 footer .footer-r a:hover{color: #009966;}
 
 /*弹窗*/
-.layer{ width:100%; height:100%; position:fixed; left:0; top:0; background:-webkit-radial-gradient(center center,70% 70%,rgba(255,255,255,0.3), rgba(0,0,0,0.9)); display:block;transition:1s all ease;z-index: 880;display: none;opacity:0;filter:alpha(opacity=0);}
+.layer{ width:100%; height:100%; position:fixed; left:0; top:0; background:-webkit-radial-gradient(center center,70% 70%,rgba(255,255,255,0.3), rgba(0,0,0,1)); display:block;transition:1s all ease;z-index: 880;display: none;opacity:0;filter:alpha(opacity=0);}
 .layerLogin {width: 400px;height: 300px;background: #339966;position: fixed;left: 50%;top: 50%;margin-left: -200px;margin-top: -150px;border-radius: 5px;z-index: 881;overflow: hidden;box-shadow: 1px 1px 10px #000;display: none;transform:scale(5);transition:1s all ease;opacity:0;filter:alpha(opacity=0);}
 .layerLogin .lgn {position: absolute;left: 0;top: 0;z-index: 1;width: 100%;height: 100%;}
 .regBor {width: 275px;height: 1px;font-size: 0;overflow: hidden;background: #006600;margin: 0 auto 2px auto;box-shadow: -1px 1px 0 #66CC99;}
