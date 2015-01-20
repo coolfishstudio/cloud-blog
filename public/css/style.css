@@ -1,5 +1,5 @@
 *{margin: 0px;padding: 0px;list-style: none;}
-html,body{height: 100%;background-color:#F7F6F2;font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;min-width: 800px;}
+html,body{height: 100%;background-color:#F7F6F2;font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;min-width: 800px;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;}
 a{text-decoration: none;color:#666;}
 
 .fl-grid{overflow: hidden;width: 100%;}
@@ -100,8 +100,9 @@ footer .footer-r a:hover{color: #009966;}
 
 /*弹窗*/
 .layer{ width:100%; height:100%; position:fixed; left:0; top:0; background:-webkit-radial-gradient(center center,70% 70%,rgba(255,255,255,0.3), rgba(0,0,0,1)); display:block;transition:1s all ease;z-index: 880;display: none;opacity:0;filter:alpha(opacity=0);}
-.layerLogin {width: 400px;height: 300px;background: #339966;position: fixed;left: 50%;top: 50%;margin-left: -200px;margin-top: -150px;border-radius: 5px;z-index: 881;overflow: hidden;box-shadow: 1px 1px 10px #000;display: none;transform:scale(5);transition:1s all ease;opacity:0;filter:alpha(opacity=0);}
-.layerLogin .lgn {position: absolute;left: 0;top: 0;z-index: 1;width: 100%;height: 100%;}
+.layerLogin {border-radius: 5px;box-shadow: 1px 1px 10px #000;width: 400px;height: 300px;margin-left: -200px;margin-top: -150px;left: 50%;top: 50%;background: #339966;position: fixed;z-index: 881;display: none;transition:.5s all ease;opacity:0;filter:alpha(opacity=0);transform-style:preserve-3d;overflow: hidden;}
+.layerLogin .lgn {width: 100%;height: 100%;position: absolute;left: 0;top: 0;overflow: hidden;transform:translateZ(1px);background: #339966;}
+.layerLogin .reg {width: 100%;height: 100%;position: absolute;left: 0;top: 0;overflow: hidden;transform:translateZ(-1px) scale(-1,1);display: none;background: #339966;}
 .regBor {width: 275px;height: 1px;font-size: 0;overflow: hidden;background: #006600;margin: 0 auto 2px auto;box-shadow: -1px 1px 0 #66CC99;}
 .layer_logo{width: 100%;font-size: 24px;text-align: center;margin-top: 25px;margin-bottom: 15px;color:#CCFFCC;}
 .login_line{height: 2px;font-size: 0;width: 215px;margin: 0 auto 30px auto;padding-top: 2px;background: #66CC99;}
@@ -161,3 +162,117 @@ footer .footer-r a:hover{color: #009966;}
 		transform: translate3d(0, 0, 0);
 	}
 }
+/* ‘登录’的打开 用在了首页登录面板 */
+.openLogin{animation-name: openLogin;animation-duration: 0.5s;-webkit-animation-name: openLogin;-webkit-animation-duration: 0.5s;}
+@-webkit-keyframes openLogin{
+	0%{
+		opacity:0;
+		-webkit-transform: scale(5);
+	}
+	85%{
+		opacity:1;
+		-webkit-transform: scale(0.8);
+	}
+	100%{
+		-webkit-transform: scale(1);
+	}
+}
+@keyframes openLogin{
+	0%{
+		opacity:0;
+		transform: scale(5);
+	}
+	85%{
+		opacity:1;
+		transform: scale(0.8);
+	}
+	100%{
+		transform: scale(1);
+	}
+}
+/* ‘登录’的关闭 用在了首页登录面板 */
+.closeLogin{animation-name: closeLogin;animation-duration: 0.75s;-webkit-animation-name: closeLogin;-webkit-animation-duration: 0.75s;}
+@-webkit-keyframes closeLogin{
+	0%{
+		opacity:1;
+		-webkit-transform: scale(1);
+	}
+	100%{
+		opacity:0;
+		-webkit-transform: scale(5);
+	}
+}
+@keyframes closeLogin{
+	0%{
+		opacity:1;
+		transform: scale(1);
+	}
+	100%{
+		opacity:0;
+		transform: scale(5);
+	}
+}
+/* ‘登录’的翻转 用在了首页登录面板 */
+.flipOutLogin{transform: scale(-1,1);-webkit-transform: scale(-1,1);animation-name: flipOutLogin;animation-duration: 0.75s;-webkit-animation-name: flipOutLogin;-webkit-animation-duration: 0.75s;}
+@-webkit-keyframes flipOutLogin{
+	0%{
+		-webkit-transform: perspective(800px) rotateY(0deg);
+	}
+	60%{
+		-webkit-transform: perspective(800px) rotateY(200deg);
+	}
+	80%{
+		-webkit-transform: perspective(800px) rotateY(160deg);
+	}
+	100%{
+		-webkit-transform: perspective(800px) rotateY(180deg);
+	}
+}
+@keyframes flipOutLogin{
+	0%{
+		transform: perspective(800px) rotateY(0deg);
+	}
+	60%{
+		transform: perspective(800px) rotateY(200deg);
+	}
+	80%{
+		transform: perspective(800px) rotateY(160deg);
+	}
+	100%{
+		transform: perspective(800px) rotateY(180deg);
+	}
+}
+/* ‘注册’的翻转 用在了首页注册面板 */
+.flipInLogin{animation-name: flipInLogin;animation-duration: 0.75s;-webkit-animation-name: flipInLogin;-webkit-animation-duration: 0.75s;}
+@-webkit-keyframes flipInLogin{
+	0%{
+		-webkit-transform: perspective(800px) rotateY(180deg);
+	}
+	60%{
+		-webkit-transform: perspective(800px) rotateY(-20deg);
+	}
+	80%{
+		-webkit-transform: perspective(800px) rotateY(20deg);
+	}
+	100%{
+		-webkit-transform: perspective(800px) rotateY(0deg);
+	}
+}
+@keyframes flipInLogin{
+	0%{
+		transform: perspective(800px) rotateY(180deg);
+	}
+	60%{
+		transform: perspective(800px) rotateY(-20deg);
+	}
+	80%{
+		transform: perspective(800px) rotateY(20deg);
+	}
+	100%{
+		transform: perspective(800px) rotateY(0deg);
+	}
+}
+
+
+
+

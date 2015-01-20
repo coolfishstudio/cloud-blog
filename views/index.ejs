@@ -229,7 +229,7 @@
                 <p class="login_reg">
                     <a href="###">忘记密码</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a href="###">账号注册</a>
+                    <a href="###" id="registOpenBtn">账号注册</a>
                 </p>
             </div>
             <div class="regBor">
@@ -238,26 +238,69 @@
             </div>
             <a href="###" class="login_close" id="loginCloseBtn"><i class="icon-remove"></i></a>
         </div>
+        <div class="reg">
+            <div class="layer_logo">- 酷鱼网 -</div>
+            <div class="login">
+                <div class="login_line">
+                </div>
+                <div class="user_login">
+                    <ul>
+                        <li class="bor">
+                            <span>邮　箱</span>
+                            <input id="txt_email_reg" type="text" value="">
+                        </li>
+                        <li>
+                            <span>密　码</span>
+                            <input type="password" value="">
+                        </li>
+                    </ul>
+                </div>
+                <a href="###" class="aLogin">注 册</a>
+                <p class="login_reg">
+                    <a href="###" id="returnLoginBtn">用户登录</a>
+                </p>
+            </div>
+            <div class="regBor">
+            </div>
+            <div class="regBor">
+            </div>
+        </div>
     </div>
     <script type="text/javascript">
         $(function(){
             //打开登录面板
             $('#loginOpenBtn').click(function(){
                 $('.layer').show();
-                $('.layerLogin').show();
+                $('.layerLogin').removeClass('flipInLogin').removeClass('closeLogin').show();
                 setTimeout(function(){
                     $('.layer').css('opacity', '1');
-                    $('.layerLogin').css({'opacity': '1','transform': 'scale(1)'});
+                    $('.layerLogin').addClass('openLogin').css('opacity', '1');
                 },100);
             });
             //关闭登录面板
             $('#loginCloseBtn').click(function(){
                 $('.layer').css('opacity', '0');
-                $('.layerLogin').css({'opacity': '0','transform': 'scale(5)'});                
+                $('.layerLogin').removeClass('flipInLogin').removeClass('openLogin').addClass('closeLogin');                
                 setTimeout(function(){
                     $('.layer').hide();
-                    $('.layerLogin').hide();
-                },1000);
+                    $('.layerLogin').hide().css('opacity', '0');
+                },500);
+            });
+            //显示注册面板
+            $('#registOpenBtn').click(function(){
+                $('.layerLogin').removeClass('openLogin').removeClass('flipInLogin').addClass('flipOutLogin');
+                setTimeout(function(){
+                    $('.reg').show();
+                    $('.lgn').hide();
+                },90);
+            });
+            //返回登录面板
+            $('#returnLoginBtn').click(function(){
+                $('.layerLogin').removeClass('openLogin').removeClass('flipOutLogin').addClass('flipInLogin');
+                setTimeout(function(){
+                    $('.lgn').show();
+                    $('.reg').hide();
+                },90);
             });
         });
     </script>
