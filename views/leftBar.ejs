@@ -1,20 +1,19 @@
   	<div class="left-bar"><!-- leftBar -->
 		<ul class="left-menu">
-			<li class="active"><a href="javascript:void();">酷</a><span>首页</span></li>
-			<li><a href="javascript:void();">博</a><span>博客</span></li>
-			<li><a href="javascript:void();">论</a><span>论坛</span></li>
-			<li><a href="javascript:void();">应</a><span>应用</span></li>
-			<li><a href="javascript:void();">游</a><span>游戏</span></li>
+			<li class="active"><a href="javascript:;">酷</a><span>首页</span></li>
+			<li><a href="javascript:;">博</a><span>博客</span></li>
+			<li><a href="javascript:;">论</a><span>论坛</span></li>
+			<li><a href="javascript:;">应</a><span>应用</span></li>
+			<li><a href="javascript:;">游</a><span>游戏</span></li>
 
 		</ul>
 		<ul class="bottom-menu">
-			<li><a href="javascript:void();"><i class="icon-question-sign"></i></a></li>
-			<li><a href="javascript:void();"><i class="icon-font"></i></a></li>
-			<!-- <li><a href="javascript:void();" id="loginOpenBtn"><i class="icon-signin"></i></a></li> -->
+			<li><a href="javascript:;"><i class="icon-question-sign"></i></a></li>
+			<!-- <li><a href="javascript:;"><i class="icon-font"></i></a></li> -->
 			<% if(user){ %>
 				<li><a href="/logout"><i class="icon-signout"></i></a></li>
 			<% }else{ %>
-				<li><a href="javascript:void();" id="loginOpenBtn"><i class="icon-signin"></i></a></li>
+				<li><a href="javascript:;" id="loginOpenBtn"><i class="icon-signin"></i></a></li>
 			<% } %>
 		</ul>
   	</div><!-- leftBar end -->
@@ -37,18 +36,18 @@
                         </li>
                     </ul>
                 </div>
-                <a href="javascript:void();" class="aLogin" id="lgnBtn">登　录</a>
+                <a href="javascript:;" class="aLogin" id="lgnBtn">登　录</a>
                 <p class="login_reg">
-                    <a href="javascript:void();">忘记密码</a>
+                    <a href="javascript:;">忘记密码</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a href="javascript:void();" id="registOpenBtn">账号注册</a>
+                    <a href="javascript:;" id="registOpenBtn">账号注册</a>
                 </p>
             </div>
             <div class="regBor">
             </div>
             <div class="regBor">
             </div>
-            <a href="javascript:void();" class="login_close" id="loginCloseBtn"><i class="icon-remove"></i></a>
+            <a href="javascript:;" class="login_close" id="loginCloseBtn"><i class="icon-remove"></i></a>
         </div>
         <div class="reg">
             <div class="layer_logo">- 酷鱼网 -</div>
@@ -71,9 +70,9 @@
                         </li>
                     </ul>
                 </div>
-                <a href="javascript:void();" class="aLogin" id="regBtn">注 册</a>
+                <a href="javascript:;" class="aLogin" id="regBtn">注 册</a>
                 <p class="login_reg">
-                    <a href="javascript:void();" id="returnLoginBtn">返回登录</a>
+                    <a href="javascript:;" id="returnLoginBtn">返回登录</a>
                 </p>
             </div>
             <div class="regBor">
@@ -136,7 +135,7 @@
                         data: {email : email, userName : userName, password : password},
                         success: function(result){
                             if(0 == result.status){
-                                toastr.success(result.content);
+                                toastr.success(result.content + ',请前往邮箱进行激活账户。');
                                 $('.layer').css('opacity', '0');
                                 $('.layerLogin').removeClass('flipOutLogin').addClass('closeLogin');            
                                 setTimeout(function(){

@@ -65,7 +65,7 @@ exports.signin = function(req, res){
     	if(err){
             res.send({status: -1, content: err});
         }else{
-            res.send({status: 0, content: '注册成功。'});
+            res.send({status: 0, content: '注册成功'});
         }
     });
 };
