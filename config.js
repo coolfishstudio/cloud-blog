@@ -11,6 +11,15 @@ module.exports = {
 		qq: '461836324',
 		email: '461836324@qq.com'
 	},
+	// 邮箱配置
+	MAIL_OPTS: {
+		host: 'smtp.126.com',
+	    port: 25,
+	    auth: {
+	      user: 'it_coolfish@126.com',
+	      pass: '789512357'
+	    }
+	},
 	//限制
 	LIMIT: {
 		//首页一页显示几个文章
