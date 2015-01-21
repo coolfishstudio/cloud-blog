@@ -1,15 +1,213 @@
   	<div class="left-bar"><!-- leftBar -->
 		<ul class="left-menu">
-			<li class="active"><a href="###">酷</a><span>首页</span></li>
-			<li><a href="###">博</a><span>博客</span></li>
-			<li><a href="###">论</a><span>论坛</span></li>
-			<li><a href="###">应</a><span>应用</span></li>
-			<li><a href="###">游</a><span>游戏</span></li>
+			<li class="active"><a href="javascript:void();">酷</a><span>首页</span></li>
+			<li><a href="javascript:void();">博</a><span>博客</span></li>
+			<li><a href="javascript:void();">论</a><span>论坛</span></li>
+			<li><a href="javascript:void();">应</a><span>应用</span></li>
+			<li><a href="javascript:void();">游</a><span>游戏</span></li>
 
 		</ul>
 		<ul class="bottom-menu">
-			<li><a href="###"><i class="icon-question-sign"></i></a></li>
-			<li><a href="###"><i class="icon-font"></i></a></li>
-			<li><a href="###" id="loginOpenBtn"><i class="icon-signin"></i></a></li>
+			<li><a href="javascript:void();"><i class="icon-question-sign"></i></a></li>
+			<li><a href="javascript:void();"><i class="icon-font"></i></a></li>
+			<!-- <li><a href="javascript:void();" id="loginOpenBtn"><i class="icon-signin"></i></a></li> -->
+			<% if(user){ %>
+				<li><a href="/logout"><i class="icon-signout"></i></a></li>
+			<% }else{ %>
+				<li><a href="javascript:void();" id="loginOpenBtn"><i class="icon-signin"></i></a></li>
+			<% } %>
 		</ul>
   	</div><!-- leftBar end -->
+  	<div class="layer"></div>
+    <div class="layerLogin">
+        <div class="lgn">
+            <div class="layer_logo">- 酷鱼网 -</div>
+            <div class="login">
+                <div class="login_line">
+                </div>
+                <div class="user_login">
+                    <ul>
+                        <li class="bor">
+                            <span>邮　箱</span>
+                            <input id="txt_email_lgn" type="text" value="">
+                        </li>
+                        <li>
+                            <span>密　码</span>
+                            <input id="txt_password_lgn"  type="password" value="">
+                        </li>
+                    </ul>
+                </div>
+                <a href="javascript:void();" class="aLogin" id="lgnBtn">登　录</a>
+                <p class="login_reg">
+                    <a href="javascript:void();">忘记密码</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="javascript:void();" id="registOpenBtn">账号注册</a>
+                </p>
+            </div>
+            <div class="regBor">
+            </div>
+            <div class="regBor">
+            </div>
+            <a href="javascript:void();" class="login_close" id="loginCloseBtn"><i class="icon-remove"></i></a>
+        </div>
+        <div class="reg">
+            <div class="layer_logo">- 酷鱼网 -</div>
+            <div class="login">
+                <!-- <div class="login_line">
+                </div> -->
+                <div class="user_login">
+                    <ul>
+                        <li class="bor">
+                            <span>邮　箱</span>
+                            <input id="txt_email_reg" type="text" value="">
+                        </li>
+                        <li class="bor">
+                            <span>昵　名</span>
+                            <input id="txt_name_reg" type="text" value="">
+                        </li>
+                        <li>
+                            <span>密　码</span>
+                            <input id="txt_password_reg" type="password" value="">
+                        </li>
+                    </ul>
+                </div>
+                <a href="javascript:void();" class="aLogin" id="regBtn">注 册</a>
+                <p class="login_reg">
+                    <a href="javascript:void();" id="returnLoginBtn">返回登录</a>
+                </p>
+            </div>
+            <div class="regBor">
+            </div>
+            <div class="regBor">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            //打开登录面板
+            $('#loginOpenBtn').click(function(){
+                $('#txt_name_reg').val('');
+                $('#txt_email_reg').val('');
+                $('#txt_password_reg').val('');
+                $('.layer').show();
+                $('.layerLogin').removeClass('flipInLogin').removeClass('closeLogin').show();
+                setTimeout(function(){
+                    $('.layer').css('opacity', '1');
+                    $('.layerLogin').addClass('openLogin').css('opacity', '1');
+                },100);
+            });
+            //关闭登录面板
+            $('#loginCloseBtn').click(function(){
+                $('.layer').css('opacity', '0');
+                $('.layerLogin').removeClass('flipInLogin').removeClass('openLogin').addClass('closeLogin');                
+                setTimeout(function(){
+                    $('.layer').hide();
+                    $('.layerLogin').hide().css('opacity', '0');
+                },500);
+            });
+            //显示注册面板
+            $('#registOpenBtn').click(function(){
+                $('.layerLogin').removeClass('openLogin').removeClass('flipInLogin').addClass('flipOutLogin');
+                setTimeout(function(){
+                    $('.reg').show();
+                    $('.lgn').hide();
+                },90);
+            });
+            //返回登录面板
+            $('#returnLoginBtn').click(function(){
+                $('.layerLogin').removeClass('openLogin').removeClass('flipOutLogin').addClass('flipInLogin');
+                setTimeout(function(){
+                    $('.lgn').show();
+                    $('.reg').hide();
+                },90);
+            });
+
+
+            var userName, email, password;
+            //注册用户
+            $('#regBtn').click(function(){
+                userName = $('#txt_name_reg').val();
+                email = $('#txt_email_reg').val();
+                password = $('#txt_password_reg').val();
+                if(changeCheck('reg')){
+                    $.ajax({
+                        type: 'POST',
+                        url: '/signin',
+                        data: {email : email, userName : userName, password : password},
+                        success: function(result){
+                            if(0 == result.status){
+                                toastr.success(result.content);
+                                $('.layer').css('opacity', '0');
+                                $('.layerLogin').removeClass('flipOutLogin').addClass('closeLogin');            
+                                setTimeout(function(){
+                                    $('.layer').hide();
+                                    $('.layerLogin').hide().css('opacity', '0');
+                                },500);
+                                setTimeout('window.location.reload()',800);
+                            }else{
+                                toastr.error(result.content);
+                            }
+                        }
+                    });
+                }
+            });
+            //用户登录
+            $('#lgnBtn').click(function(){
+                email = $('#txt_email_lgn').val();
+                password = $('#txt_password_lgn').val();
+                if(changeCheck('lgn')){
+                    $.ajax({
+                        type: 'POST',
+                        url: '/login',
+                        data: {email : email, password : password},
+                        success: function(result){
+                            if(0 == result.status){
+                                toastr.success(result.content);
+                                $('.layer').css('opacity', '0');
+                                $('.layerLogin').removeClass('flipOutLogin').addClass('closeLogin');            
+                                setTimeout(function(){
+                                    $('.layer').hide();
+                                    $('.layerLogin').hide().css('opacity', '0');
+                                },500);
+                                setTimeout('window.location.reload()',800);
+                            }else{
+                                toastr.error(result.content);
+                            }
+                        }
+                    });
+                }
+            });
+            function changeCheck(type){
+                var userPatrn = /^(\w|[\u4e00-\u9fa5]){2,10}$/;
+                var pwdPatrn = /^(\w){5,10}$/;
+                var emailPatrn = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+                if('' == email){
+                    toastr.error('邮箱不能为空');
+                    return false;
+                }
+                if(!emailPatrn.exec(email)){
+                    toastr.error('请输入正确的邮箱');
+                    return false;
+                }
+                if('' == password){
+                    toastr.error('密码不能为空');
+                    return false;
+                }
+                if(!pwdPatrn.exec(password)){
+                    toastr.error('密码只能输入5-20个字母、数字、下划线');
+                    return false;
+                }
+                if(type === 'reg'){
+                    if('' == userName){
+                        toastr.error('昵称不能为空');
+                        return false;
+                    }
+                    if(!userPatrn.exec(userName)){
+                        toastr.error('昵称只能输入2-10个字母、汉字、数字、下划线');
+                        return false;
+                    }
+                }
+                return true;
+            }
+        });
+    </script>

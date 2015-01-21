@@ -33,9 +33,9 @@ exports.getByUserName = function(userName, callback){
 	userColl.findOne({name : userName},callback);
 };
 /* 用户登录修改最后登录时间 */
-exports.updateLastLoginDate = function(userID, callback){
+exports.updateLastLoginDate = function(userID, userObj,callback){
 	userObj.lastLoginDate = new Date().getTime();
-	userColl.findAndModify({_id: userID.toLowerCase()}, [], {}, {new: true}, callback);
+	userColl.findAndModify({_id: userID.toLowerCase()}, [], {$set: userObj}, {new: true}, callback);
 };
 /* 获取用户总数 */
 exports.getCount = function(info, callback){

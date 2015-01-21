@@ -5,7 +5,7 @@ var pageUser = require('./pageUser');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { user:req.session.user || ''});
 });
 
 //初步定制 需要的路由

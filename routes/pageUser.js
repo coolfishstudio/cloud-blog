@@ -103,8 +103,7 @@ exports.login = function(req, res){
         },
         //纪录最后一次登陆的时间
         updateLastLoginDate : function(done){
-            user.updateLastLoginDate(userInfo._id, function(err, info){
-            	console.log(err, '-=-=', info);
+            user.updateLastLoginDate(userInfo._id,{},function(err, info){
                 done(err);
             });
         }
@@ -113,12 +112,12 @@ exports.login = function(req, res){
             res.send({status: -1, content: err});
         }else{
             res.send({status: 0, content: '登录成功。'});
-            // res.render('index');//注册成功后返回主页
         } 
     });
 };
 
 //退出
 exports.logout = function(req, res){
-	
+	req.session.user = null;
+    res.redirect('/');
 };
