@@ -102,7 +102,7 @@ footer .footer-r a:hover{color: #009966;}
 .layer{ width:100%; height:100%; position:fixed; left:0; top:0; background:-webkit-radial-gradient(center center,70% 70%,rgba(255,255,255,0.3), rgba(0,0,0,1)); display:block;transition:1s all ease;z-index: 880;display: none;opacity:0;filter:alpha(opacity=0);}
 .layerLogin {border-radius: 5px;box-shadow: 1px 1px 10px #000;width: 400px;height: 300px;margin-left: -200px;margin-top: -150px;left: 50%;top: 50%;background: #339966;position: fixed;z-index: 881;display: none;transition:.5s all ease;opacity:0;filter:alpha(opacity=0);transform-style:preserve-3d;overflow: hidden;}
 .layerLogin .lgn {width: 100%;height: 100%;position: absolute;left: 0;top: 0;overflow: hidden;transform:translateZ(1px);background: #339966;}
-.layerLogin .reg {width: 100%;height: 100%;position: absolute;left: 0;top: 0;overflow: hidden;transform:translateZ(-1px) scale(-1,1);display: none;background: #339966;}
+.layerLogin .reg {width: 100%;height: 100%;position: absolute;left: 0;top: 0;overflow: hidden;transform:translateZ(-1px);display: none;background: #339966;}
 .regBor {width: 275px;height: 1px;font-size: 0;overflow: hidden;background: #006600;margin: 0 auto 2px auto;box-shadow: -1px 1px 0 #66CC99;}
 .layer_logo{width: 100%;font-size: 24px;text-align: center;margin-top: 25px;margin-bottom: 15px;color:#CCFFCC;}
 .login_line{height: 2px;font-size: 0;width: 215px;margin: 0 auto 30px auto;padding-top: 2px;background: #66CC99;}
@@ -213,63 +213,63 @@ footer .footer-r a:hover{color: #009966;}
 	}
 }
 /* ‘登录’的翻转 用在了首页登录面板 */
-.flipOutLogin{transform: scale(-1,1);-webkit-transform: scale(-1,1);animation-name: flipOutLogin;animation-duration: 0.75s;-webkit-animation-name: flipOutLogin;-webkit-animation-duration: 0.75s;}
+.flipOutLogin{animation-name: flipOutLogin;animation-duration: 0.75s;-webkit-animation-name: flipOutLogin;-webkit-animation-duration: 0.75s;}
 @-webkit-keyframes flipOutLogin{
 	0%{
-		-webkit-transform: perspective(800px) rotateY(0deg);
+		-webkit-transform: perspective(800px) rotateY(0deg) scale(1,1);
 	}
 	60%{
-		-webkit-transform: perspective(800px) rotateY(200deg);
+		-webkit-transform: perspective(800px) rotateY(200deg) scale(-1,1);
 	}
 	80%{
-		-webkit-transform: perspective(800px) rotateY(160deg);
+		-webkit-transform: perspective(800px) rotateY(160deg) scale(-1,1);
 	}
 	100%{
-		-webkit-transform: perspective(800px) rotateY(180deg);
+		-webkit-transform: perspective(800px) rotateY(180deg) scale(-1,1);
 	}
 }
 @keyframes flipOutLogin{
 	0%{
-		transform: perspective(800px) rotateY(0deg);
+		transform: perspective(800px) rotateY(0deg) scale(-1,1);
 	}
 	60%{
-		transform: perspective(800px) rotateY(200deg);
+		transform: perspective(800px) rotateY(200deg) scale(-1,1);
 	}
 	80%{
-		transform: perspective(800px) rotateY(160deg);
+		transform: perspective(800px) rotateY(160deg) scale(-1,1);
 	}
 	100%{
-		transform: perspective(800px) rotateY(180deg);
+		transform: perspective(800px) rotateY(180deg) scale(-1,1);
 	}
 }
 /* ‘注册’的翻转 用在了首页注册面板 */
 .flipInLogin{animation-name: flipInLogin;animation-duration: 0.75s;-webkit-animation-name: flipInLogin;-webkit-animation-duration: 0.75s;}
 @-webkit-keyframes flipInLogin{
 	0%{
-		-webkit-transform: perspective(800px) rotateY(180deg);
+		-webkit-transform: perspective(800px) rotateY(180deg) scale(-1,1);
 	}
 	60%{
-		-webkit-transform: perspective(800px) rotateY(-20deg);
+		-webkit-transform: perspective(800px) rotateY(-20deg) scale(1,1);
 	}
 	80%{
-		-webkit-transform: perspective(800px) rotateY(20deg);
+		-webkit-transform: perspective(800px) rotateY(20deg) scale(1,1);
 	}
 	100%{
-		-webkit-transform: perspective(800px) rotateY(0deg);
+		-webkit-transform: perspective(800px) rotateY(0deg) scale(1,1);
 	}
 }
 @keyframes flipInLogin{
 	0%{
-		transform: perspective(800px) rotateY(180deg);
+		transform: perspective(800px) rotateY(180deg) scale(1,1);
 	}
 	60%{
-		transform: perspective(800px) rotateY(-20deg);
+		transform: perspective(800px) rotateY(-20deg) scale(1,1);
 	}
 	80%{
-		transform: perspective(800px) rotateY(20deg);
+		transform: perspective(800px) rotateY(20deg) scale(1,1);
 	}
 	100%{
-		transform: perspective(800px) rotateY(0deg);
+		transform: perspective(800px) rotateY(0deg) scale(1,1);
 	}
 }
 
