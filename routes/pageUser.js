@@ -53,8 +53,8 @@ exports.signin = function(req, res){
                 password : tool.getMD5(password)
             },function(err, info){
                 if(!err){
-                	info[0].password = '';
-                    req.session.user = info[0];
+                	// info[0].password = '';
+                 //    req.session.user = info[0];
                     done();
                 }else{
                     done(err);

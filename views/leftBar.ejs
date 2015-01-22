@@ -135,14 +135,13 @@
                         data: {email : email, userName : userName, password : password},
                         success: function(result){
                             if(0 == result.status){
-                                toastr.success(result.content + ',请前往邮箱进行激活账户。');
+                                toastr.success(result.content + ',请前往邮箱激活账户。');
                                 $('.layer').css('opacity', '0');
                                 $('.layerLogin').removeClass('flipOutLogin').addClass('closeLogin');            
                                 setTimeout(function(){
                                     $('.layer').hide();
                                     $('.layerLogin').hide().css('opacity', '0');
                                 },500);
-                                setTimeout('window.location.reload()',800);
                             }else{
                                 toastr.error(result.content);
                             }

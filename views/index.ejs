@@ -4,7 +4,7 @@
     	<%- include leftPanel %>
     	<div class="index-panel-box">
 			<div class="index-panel-title">
-                <ul>
+                <ul class="index-panel-title-box">
                     <li class="active">
                         <a href="javascript:;">酷鱼博客</a>
                     </li>
@@ -12,6 +12,35 @@
                         <a href="javascript:;">热门文章</a>
                     </li> -->
                 </ul>
+                <% if(user){ %>
+                <div class="user-settings">
+                    <ul>
+                        <li>
+                            <a class="dropdown-toggle" href="javascript:;">
+                                <img src="http://static.jianshu.io/assets/default_avatar-0409f90c8150e4be46d407d391a4848e.png">
+                                <b class="caret"></b>
+                            </a>            
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="javascript:;"><i class="icon-pencil"></i> 写文章</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"><i class="icon-user"></i> 我的主页</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"><i class="icon-cogs"></i> 设置</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"><i class="icon-question-sign"></i> 帮助</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;"><i class="icon-signout"></i> 退出</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <% } %>
             </div>
             <div class="index-panel-content">
                 <ul class="sort-nav">
