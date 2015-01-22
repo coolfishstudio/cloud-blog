@@ -179,16 +179,23 @@ exports.activate = function(req, res){
 			user.update(userInfo._id,{
 				'activate' : true
 			},function(err, info){
-                done(err);
+				if(err){
+					done(err);
+				}else{
+					userInfo.password = '';
+                    req.session.user = userInfo;
+					done();
+				}
+                
             });
 		}
 	}, function(err){
 		if(err){
 			//有问题
-			res.render('activate', {status: -1, content: err});
+			res.render('activate', {status: -1, content: email, error: err});
 		}else{
 			//没问题
-			res.render('activate', {status: 0, content: '激活成功。'});
+			res.render('activate', {status: 0, content: email});
 		}
 	});
 };
