@@ -1,5 +1,6 @@
 var crypto = require('crypto');//加密模块
-
+var nodemailer = require('nodemailer');//邮件
+var config = require( '../../config' );
 
 //创建时间/修改时间 格式：2014-01-01 10:10:10
 exports.getThisTime = function(){
@@ -76,3 +77,16 @@ exports.getDateDiff = function(dateTimeStamp){
 	}
 	return result;
 }
+//发送邮件
+exports.sendMail = function(mail, title, html, callback){
+    var transporter = nodemailer.createTransport(
+    	config.MAIL_OPTS
+    );
+    var mailOptions = {
+        from: 'Coolfish<it_coolfish@126.com>',
+        to: mail,
+        subject: title,
+        html: html
+    };
+    transporter.sendMail(mailOptions, callback);
+};

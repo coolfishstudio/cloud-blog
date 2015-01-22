@@ -5,6 +5,8 @@ module.exports = {
 	LISTEN_PORT: process.env.PORT || 9201,
 	// 网站名字
 	NAME: 'IT酷鱼网',
+	// 网站名字
+	HOSTNAME: 'http://blog.coolfishstudio.com',
 	// 负责人
 	ADMIN: {
 		name: 'Yves',

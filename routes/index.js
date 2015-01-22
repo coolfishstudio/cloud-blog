@@ -16,6 +16,8 @@ router.post('/signin', pageUser.signin);
 router.post('/login', pageUser.login);
 //退出 get
 router.get('/logout', pageUser.logout);
+//激活
+router.get('/activate/:email/:pwdTime', pageUser.activate);
 
 /* article 文章 */
 //增加文章
