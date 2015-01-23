@@ -8,6 +8,10 @@ router.get('/', function(req, res) {
   res.render('index', { user:req.session.user || ''});
 });
 
+router.get('/editor', function(req, res) {
+  res.render('editor', { user:req.session.user || ''});
+});
+
 //初步定制 需要的路由
 /******************** user 用户 ********************/
 //注册 post
