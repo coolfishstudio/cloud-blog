@@ -17,7 +17,8 @@
                     <ul>
                         <li>
                             <a class="dropdown-toggle" href="javascript:;">
-                                <img src="http://static.jianshu.io/assets/default_avatar-0409f90c8150e4be46d407d391a4848e.png">
+                                <p><%- user.name %></p>
+                                <img src="<%- user.headSrc %>">
                                 <b class="caret"></b>
                             </a>            
                             <ul class="dropdown-menu">
@@ -235,4 +236,23 @@
             <a class="next" href="javascript:;"><i>点击查看更多</i></a>
         </div>
   	</div><!-- rightCont end -->
+    <script type="text/javascript">
+    $(function(){
+        /* 处理用户操作事件 */
+        $('.dropdown-toggle').click(function(){
+            if($('.dropdown-menu').css('display') == 'none'){
+                $('.dropdown-menu').css('display','block');
+            }else{
+                $('.dropdown-menu').css('display','none');
+            }
+        });
+        $('.dropdown-menu').hover(function(){
+            $('.dropdown-menu').css('display','block');
+        },function(){
+            setTimeout(function(){
+                $('.dropdown-menu').css('display','none');
+            },500);
+        });
+    });
+    </script>
 <%- include footer %>
