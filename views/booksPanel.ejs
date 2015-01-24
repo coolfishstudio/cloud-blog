@@ -1,0 +1,57 @@
+<div class="editor-panel">
+	<div class="editor-books-panel">
+		<div class="new-notebook">
+			<a href="javascript:;" class="create-notebook"> +新建笔记</a> 
+			<div class="add-notebook-box">
+				<input placeholder="请输入笔记名..." type="text" name="bookName" class="notebook-input"> 
+				<a href="javascript:;" class="btn btn-mainGrey w48" id="cancel-create-notebook"> 取消 </a>
+				<a href="javascript:;" class="btn btn-mainGreen w48"> 确定 </a>
+			</div>
+		</div>
+		<ul class="list-notebook">
+			<li class="one-notebook active">
+				<a href="javascript:;" class="notebook-name">
+					<i class="icon icon-notebook"></i>
+					<span>日记本</span>
+				</a>
+				<a href="javascript:;" class="notebook-edit">
+					<i class="icon-edit"></i>
+				</a> 
+				<a href="javascript:;" class="notebook-delete"> 
+					<i class="icon-trash"></i>
+				</a> 
+			</li>  
+			<li class="one-notebook">
+				<a href="javascript:;" class="notebook-name">
+					<i class="icon icon-notebook"></i>
+					<span>未分类</span>
+				</a>
+			</li>  
+		</ul>
+		<div class="commercial">   
+			<p>属于写作者的文集, 一个简洁而优雅的环境让你专注于书写。</p>  
+		</div>
+	</div>
+	<div class="editor-articles-panel">
+		asdasd
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	//显示创建笔记面板
+	$('.create-notebook').click(function(){
+		$('.add-notebook-box').show();
+		$('.add-notebook-box').animate({ 
+			'height' : '85px'
+		}, 500);
+	});
+	//取消创建笔记面板
+	$('#cancel-create-notebook').click(function(){
+		$('.add-notebook-box').animate({ 
+			'height' : '0px'
+		}, 500, function(){
+			$('.add-notebook-box').hide();
+		});
+	});
+});
+</script>

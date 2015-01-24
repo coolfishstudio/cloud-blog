@@ -16,7 +16,7 @@ a{text-decoration: none;color:#666;}
 .fl-width-3-6{width: 50%;float: left;}
 .fl-width-4-6{width: 66.67%;float: left;}
 .fl-width-5-6{width: 83.33%;float: left;}
-
+.w48{width: 48%;box-sizing: border-box;}
 
 
 
@@ -115,7 +115,37 @@ footer .footer-r a:hover{color: #009966;}
 
 
 /**/
-.index-panel-box .editor-panel-content{width: 100%;}
+.right-content .editor-panel{width: 40%;height: 100%;overflow: hidden;position: fixed;z-index: 788;margin: 0;overflow: hidden;}
+.editor-panel .editor-books-panel{float: left;width:37.5%;height: 100%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;border-right: 1px #ccc solid;}
+.editor-panel .editor-articles-panel{float: left;width:62.5%;height: 100%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;border-right: 1px #ccc solid;}
+.right-content .editor-panel-box{overflow: hidden;margin-left: 40%;margin-bottom: 10px;padding-left: 24px;}
+
+.editor-books-panel .new-notebook{margin: 20px 0 0 0;padding: 10px 20px 10px 10px;border-top: 1px #ccc solid;}
+.new-notebook .create-notebook{font-size: 11px;font-weight: normal;line-height: 20px;font-style: italic;}
+.new-notebook .add-notebook-box{display: none;overflow: hidden;height: 0;}
+.new-notebook .add-notebook-box .notebook-input{width: 100%;height: 35px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;background-color: white;border: 1px solid #cccccc;-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);display: inline-block;padding: 4px 6px;margin-bottom: 10px;margin-top: 10px;font-size: 14px;line-height: 20px;color: #555555;border-radius: 4px;vertical-align: middle;}
+
+.editor-books-panel .list-notebook{overflow-y: auto;overflow-x: hidden;margin-bottom: 10px;font-size: 15px;font-weight: normal;line-height: 20px;font-style: italic;list-style: none;}
+.list-notebook .one-notebook{height: 36px;position: relative;line-height: 36px;font-size: 15px;transition: background-color 0.3s linear;}
+.list-notebook .one-notebook.active{color: #fff;
+text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+background-color: #009966;box-shadow: inset 1px 1px 2px rgba(0,0,0,0.35),0 1px 4px rgba(0,0,0,0.15);}
+.list-notebook .one-notebook.active a{color: #fff;}
+.list-notebook .notebook-name{padding: 0 15px;}
+.list-notebook .one-notebook .notebook-name{margin-right: 52px;display: block;}
+.list-notebook .one-notebook .notebook-edit{position: absolute;width: 24px;right: 24px;top:0;text-align: center;}
+.list-notebook .one-notebook .notebook-delete{position: absolute;width: 24px;right: 0;top:0;text-align: center;margin-right: 4px;}
+
+.btn{border-radius: 4px;box-shadow: none;color: #3f3f3f;border: 1px solid #cccccc;border-color: #e6e6e6;text-shadow: none;display: inline-block;padding: 4px 12px;margin-bottom: 0;font-size: 14px;line-height: 20px;text-align: center;vertical-align: middle;cursor: pointer;border-color: #d5d5d5;}
+.btn:hover{border-color: #ddd;}
+.btn.btn-mainGrey{color: #555;border-color: #ddd;background: #eee;}
+.btn.btn-mainGrey:hover{background: #e6e6e6;}
+.btn.btn-mainGreen{color: #fff;border-color: #009966;background: #009966;}
+.btn.btn-mainGreen:hover{background: #00CC99;border-color: #00CC99;}
+
+
+
+
 
 
 /*弹窗*/
