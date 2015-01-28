@@ -55,6 +55,7 @@ $(function(){
 			$('.add-notebook-box').hide();
 		});
 	});
+	//创建笔记
 	$('#sure－create-notebook').click(function(){
 		var _bookName = $('#bookName').val();
 		if(_bookName){
@@ -64,12 +65,13 @@ $(function(){
                 data: {bookName : _bookName},
                 success: function(result){
                     if(0 == result.status){
-                        toastr.success(result.content);
+                        toastr.success('添加笔记成功。');
                         $('#bookName').val('');
                         $('.add-notebook-box').animate({ 
 							'height' : '0px'
 						}, 500, function(){
 							$('.add-notebook-box').hide();
+							createBookHtml(result.content);
 						});
                     }else{
                         toastr.error(result.content);
@@ -80,5 +82,39 @@ $(function(){
 			toastr.error('笔记名称不能为空。');
 		}
 	});
+	//选中笔记
+	$('.list-notebook').delegate('li', 'click',function(){
+		$('.one-notebook').removeClass('active');
+		$(this).addClass('active');
+	});
+	//删除笔记
+	$('.list-notebook').delegate('.notebook-delete', 'click',function(){
+		var _this = $(this);
+		var _bookID = _this.attr('relBID');
+		$.ajax({
+            type: 'POST',
+            url: '/b/del',
+            data: {bookID : _bookID},
+            success: function(result){
+                if(0 == result.status){
+                    toastr.success(result.content);
+                    
+                    _this.parent().animate({ 
+						'opacity' : '0'
+					}, 500, function(){
+						_this.parent().remove();
+					});
+                }else{
+                    toastr.error(result.content);
+                }
+            }
+        });
+	});
+
+
+	function createBookHtml(info){
+		var html = '<li class="one-notebook"><a href="javascript:;" class="notebook-name"><i class="icon icon-notebook"></i><span>' + info.name + '</span></a><a href="javascript:;" class="notebook-edit" relBID="' + info._id + '"><i class="icon-edit"></i></a><a href="javascript:;" class="notebook-delete" relBID="' + info._id + '"><i class="icon-trash"></i></a></li>';
+		$('.list-notebook').prepend(html);
+	}
 });
 </script>

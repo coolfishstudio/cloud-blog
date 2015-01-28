@@ -6,7 +6,7 @@ var pageBook = require('./pageBook');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { user:req.session.user || ''});
+	res.render('index', { user:req.session.user || ''});
 });
 
 //初步定制 需要的路由
@@ -24,6 +24,7 @@ router.get('/activate/:email/:pwdTime', pageUser.activate);
 router.post('/b/add', pageBook.add);
 //修改书籍
 //删除书籍
+router.post('/b/del', pageBook.remove);
 //查询书籍
 router.get('/editor', pageBook.getByUserID);
 /* article 文章 */
