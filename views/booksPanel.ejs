@@ -3,9 +3,9 @@
 		<div class="new-notebook">
 			<a href="javascript:;" class="create-notebook"> +新建笔记</a> 
 			<div class="add-notebook-box">
-				<input placeholder="请输入笔记名..." type="text" name="bookName" class="notebook-input"> 
+				<input placeholder="请输入笔记名..." type="text" id="bookName" class="notebook-input"> 
 				<a href="javascript:;" class="btn btn-mainGrey w48" id="cancel-create-notebook"> 取消 </a>
-				<a href="javascript:;" class="btn btn-mainGreen w48"> 确定 </a>
+				<a href="javascript:;" class="btn btn-mainGreen w48" id="sure－create-notebook"> 确定 </a>
 			</div>
 		</div>
 		<ul class="list-notebook">
@@ -52,6 +52,25 @@ $(function(){
 		}, 500, function(){
 			$('.add-notebook-box').hide();
 		});
+	});
+	$('#sure－create-notebook').click(function(){
+		var _bookName = $('#bookName').val();
+		if(_bookName){
+			$.ajax({
+                type: 'POST',
+                url: '/b/add',
+                data: {bookName : _bookName},
+                success: function(result){
+                    if(0 == result.status){
+                        toastr.success(result.content);
+                    }else{
+                        toastr.error(result.content);
+                    }
+                }
+            });
+		}else{
+			toastr.error('笔记名称不能为空。');
+		}
 	});
 });
 </script>

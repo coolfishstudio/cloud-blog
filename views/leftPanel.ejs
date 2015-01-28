@@ -5,6 +5,26 @@
         <h1>博客</h1>
         <h3>博客笔记，纪录步伐</h3>
         <h6>在这里更好地学习和阅读</h6>
-        <a class="btn" href="/editor">提笔写篇文章</a>
+        <% if(user){ %>
+        	<a href="/editor">提笔写篇文章</a>
+        <% }else{ %>
+        	<a id="loginOpenABtn" href="javascript:;">提笔写篇文章</a>
+        <% } %>
     </div>
 </div>
+<script type="text/javascript">
+$(function(){
+	//打开登录面板
+    $('#loginOpenABtn').click(function(){
+        $('#txt_name_reg').val('');
+        $('#txt_email_reg').val('');
+        $('#txt_password_reg').val('');
+        $('.layer').show();
+        $('.layerLogin').removeClass('flipInLogin').removeClass('closeLogin').show();
+        setTimeout(function(){
+            $('.layer').css('opacity', '1');
+            $('.layerLogin').addClass('openLogin').css('opacity', '1');
+        },100);
+    });
+});
+</script>
