@@ -32,7 +32,29 @@ exports.add = function(req, res){
 };
 
 exports.getByUserID = function(req, res){
-	
+	if(!req.session || !req.session.user || !req.session.user._id){
+        return res.send({status: -2, content: '非法操作'});
+    }
+    var userID = req.session.user._id;
+    var info = [];
+    async.series({
+        findBookList : function(done){
+            book.getByUserID(userID, function(err, list){
+                if(!err){
+                    info = list;
+                    done();
+                }else{
+                    done(err);
+                }
+            });
+        }
+    },function(err){
+        if(err){
+            res.render('error', { user:req.session.user || ''});
+        }else{
+            res.render('editor', { user:req.session.user || '', bookList : info});
+        }
+    });
 };
 
 exports.remove = function(req, res){

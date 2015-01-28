@@ -9,19 +9,21 @@
 			</div>
 		</div>
 		<ul class="list-notebook">
-			<li class="one-notebook active">
+			<% bookList.forEach(function(info, index){ %>
+			<li class="one-notebook">
 				<a href="javascript:;" class="notebook-name">
 					<i class="icon icon-notebook"></i>
-					<span>日记本</span>
+					<span><%- info.name %></span>
 				</a>
-				<a href="javascript:;" class="notebook-edit">
+				<a href="javascript:;" class="notebook-edit" relBID="<%- info._id %>">
 					<i class="icon-edit"></i>
 				</a> 
-				<a href="javascript:;" class="notebook-delete"> 
+				<a href="javascript:;" class="notebook-delete" relBID="<%- info._id %>"> 
 					<i class="icon-trash"></i>
 				</a> 
-			</li>  
-			<li class="one-notebook">
+			</li>
+			<% }); %>
+			<li class="one-notebook active">
 				<a href="javascript:;" class="notebook-name">
 					<i class="icon icon-notebook"></i>
 					<span>未分类</span>
