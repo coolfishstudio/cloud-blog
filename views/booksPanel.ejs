@@ -63,6 +63,12 @@ $(function(){
                 success: function(result){
                     if(0 == result.status){
                         toastr.success(result.content);
+                        $('#bookName').val('');
+                        $('.add-notebook-box').animate({ 
+							'height' : '0px'
+						}, 500, function(){
+							$('.add-notebook-box').hide();
+						});
                     }else{
                         toastr.error(result.content);
                     }

@@ -4,14 +4,31 @@ var book = require('./module/book'),
     config = require('../config');
 
 exports.add = function(req, res){
-	if(!req.session || !req.session.user){
+	if(!req.session || !req.session.user || !req.session.user._id){
         return res.send({status: -2, content: '非法操作'});
     }
-    console.log('req.session.user:',req.session.user);
     var userID = req.session.user._id;
 	var bookName = req.body.bookName;
-	console.log('userID', userID);
-	res.send({status: 0, content: ''});
+	async.series({
+		createBooks : function(done){
+			book.insert({
+                name : bookName,
+                userID : userID
+            },function(err, info){
+                if(!err){
+                    done();
+                }else{
+                    done(err);
+                }
+            });
+		}
+	},function(err){
+		if(err){
+            res.send({status: -1, content: err});
+        }else{
+            res.send({status: 0, content: '添加笔记成功。'});
+        }
+	});
 };
 
 exports.getByUserID = function(req, res){
