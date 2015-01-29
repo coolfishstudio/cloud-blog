@@ -71,6 +71,7 @@ $(function(){
 							'height' : '0px'
 						}, 500, function(){
 							$('.add-notebook-box').hide();
+							$('.one-notebook').removeClass('active');
 							createBookHtml(result.content);
 						});
                     }else{
@@ -98,10 +99,11 @@ $(function(){
             success: function(result){
                 if(0 == result.status){
                     toastr.success(result.content);
-                    
                     _this.parent().animate({ 
 						'opacity' : '0'
 					}, 500, function(){
+						$('.one-notebook').removeClass('active');
+						_this.parent().parent().children('.one-notebook:first').addClass('active');
 						_this.parent().remove();
 					});
                 }else{
@@ -110,10 +112,37 @@ $(function(){
             }
         });
 	});
+	//修改笔记
+	$('.list-notebook').delegate('.notebook-edit', 'dblclick',function(){
+		
+	});
+	//修改笔记
+	$('.list-notebook').delegate('.notebook-edit', 'click',function(){
+		var _this = $(this);
+		var _bookID = _this.attr('relBID');
+		// $.ajax({
+  //           type: 'POST',
+  //           url: '/b/update',
+  //           data: {bookID : _bookID},
+  //           success: function(result){
+  //               if(0 == result.status){
+  //                   toastr.success(result.content);
+                    
+  //                   _this.parent().animate({ 
+		// 				'opacity' : '0'
+		// 			}, 500, function(){
+		// 				_this.parent().remove();
+		// 			});
+  //               }else{
+  //                   toastr.error(result.content);
+  //               }
+  //           }
+  //       });
+	});
 
 
 	function createBookHtml(info){
-		var html = '<li class="one-notebook"><a href="javascript:;" class="notebook-name"><i class="icon icon-notebook"></i><span>' + info.name + '</span></a><a href="javascript:;" class="notebook-edit" relBID="' + info._id + '"><i class="icon-edit"></i></a><a href="javascript:;" class="notebook-delete" relBID="' + info._id + '"><i class="icon-trash"></i></a></li>';
+		var html = '<li class="one-notebook active"><a href="javascript:;" class="notebook-name"><i class="icon icon-notebook"></i><span>' + info.name + '</span></a><a href="javascript:;" class="notebook-edit" relBID="' + info._id + '"><i class="icon-edit"></i></a><a href="javascript:;" class="notebook-delete" relBID="' + info._id + '"><i class="icon-trash"></i></a></li>';
 		$('.list-notebook').prepend(html);
 	}
 });

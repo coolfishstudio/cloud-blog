@@ -23,6 +23,7 @@ router.get('/activate/:email/:pwdTime', pageUser.activate);
 //增加书籍
 router.post('/b/add', pageBook.add);
 //修改书籍
+router.post('/b/update', pageBook.update);
 //删除书籍
 router.post('/b/del', pageBook.remove);
 //查询书籍

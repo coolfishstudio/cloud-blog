@@ -66,7 +66,7 @@ exports.remove = function(req, res){
     var userID = req.session.user._id;
     var bookID = req.body.bookID;
     async.series({
-        removeBooks : function(done){
+        removeBook : function(done){
             book.remove(bookID, function(err, info){
                 if(!err){
                     done();
@@ -85,5 +85,31 @@ exports.remove = function(req, res){
 };
 
 exports.update = function(req, res){
-	
+    if(!req.session || !req.session.user || !req.session.user._id){
+        return res.send({status: -2, content: '非法操作'});
+    }
+    var userID = req.session.user._id;
+    var bookID = req.body.bookID;
+    var bookName = req.body.bookName;
+    var info = {};
+    async.series({
+        updateBook : function(done){
+            book.update(bookID, {
+                name : bookName
+            }, function(err, obj){
+                if(!err){
+                    info = obj;
+                    done();
+                }else{
+                    done(err);
+                }
+            });
+        }
+    },function(err){
+        if(err){
+            res.send({status: -1, content: '服务器出错。'});
+        }else{
+            res.send({status: 0, content: info});
+        }
+    });	
 };
