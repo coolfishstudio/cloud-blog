@@ -19,7 +19,6 @@ a{text-decoration: none;color:#666;}
 .w48{width: 48%;box-sizing: border-box;}
 
 
-
 /* 左侧菜单栏 */
 .left-bar{z-index: 889;position: fixed;top: 0px;left: 0;width: 45px;min-height: 450px;background-color: #2f2f2f;border-collapse: separate;bottom: 0;box-shadow: 0 0 10px #1d1d1d inset;}
 .left-bar .left-menu{list-style: none;padding: 0;margin: 0;text-align: center;cursor: pointer;}
