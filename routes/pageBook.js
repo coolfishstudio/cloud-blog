@@ -79,7 +79,7 @@ exports.remove = function(req, res){
         if(err){
             res.send({status: -1, content: '服务器出错。'});
         }else{
-            res.send({status: 0, content: '删除笔记成功。'});
+            res.send({status: 0, content: '删除专辑成功。'});
         }
     });
 };

@@ -1,9 +1,9 @@
 <div class="editor-panel">
 	<div class="editor-books-panel">
 		<div class="new-notebook">
-			<a href="javascript:;" class="create-notebook"> +新建笔记</a> 
+			<a href="javascript:;" class="create-notebook"> +新建专辑</a> 
 			<div class="add-notebook-box">
-				<input placeholder="请输入笔记名..." type="text" id="bookName" class="notebook-input"> 
+				<input placeholder="请输入专辑名..." type="text" id="bookName" class="notebook-input"> 
 				<a href="javascript:;" class="btn btn-mainGrey w48" id="cancel-create-notebook"> 取消 </a>
 				<a href="javascript:;" class="btn btn-mainGreen w48" id="sure－create-notebook"> 确定 </a>
 			</div>
@@ -31,7 +31,7 @@
 			</li>  
 		</ul>
 		<div class="commercial">   
-			<p>属于写作者的文集, 一个简洁而优雅的环境让你专注于书写。</p>  
+			<p>属于作者的专辑, 一个简洁而优雅的环境让你专注于书写。</p>  
 		</div>
 	</div>
 	<div class="editor-articles-panel">
@@ -40,14 +40,14 @@
 </div>
 <script type="text/javascript">
 $(function(){
-	//显示创建笔记面板
+	//显示创建专辑面板
 	$('.create-notebook').click(function(){
 		$('.add-notebook-box').show();
 		$('.add-notebook-box').animate({ 
 			'height' : '85px'
 		}, 500);
 	});
-	//取消创建笔记面板
+	//取消创建专辑面板
 	$('#cancel-create-notebook').click(function(){
 		$('.add-notebook-box').animate({ 
 			'height' : '0px'
@@ -55,7 +55,7 @@ $(function(){
 			$('.add-notebook-box').hide();
 		});
 	});
-	//创建笔记
+	//创建专辑
 	$('#sure－create-notebook').click(function(){
 		var _bookName = $('#bookName').val();
 		if(_bookName){
@@ -65,7 +65,7 @@ $(function(){
                 data: {bookName : _bookName},
                 success: function(result){
                     if(0 == result.status){
-                        toastr.success('添加笔记成功。');
+                        toastr.success('添加专辑成功。');
                         $('#bookName').val('');
                         $('.add-notebook-box').animate({ 
 							'height' : '0px'
@@ -80,15 +80,15 @@ $(function(){
                 }
             });
 		}else{
-			toastr.error('笔记名称不能为空。');
+			toastr.error('专辑名称不能为空。');
 		}
 	});
-	//选中笔记
+	//选中专辑
 	$('.list-notebook').delegate('li', 'click',function(){
 		$('.one-notebook').removeClass('active');
 		$(this).addClass('active');
 	});
-	//删除笔记
+	//删除专辑
 	$('.list-notebook').delegate('.notebook-delete', 'click',function(){
 		var _this = $(this);
 		var _bookID = _this.attr('relBID');
@@ -113,7 +113,7 @@ $(function(){
         });
 	});
 
-	//修改笔记
+	//修改专辑
 	$('.list-notebook').delegate('.notebook-edit', 'click',function(){
 		var _this = $(this);
 		var _bookID = _this.attr('relBID');

@@ -19,15 +19,16 @@ router.post('/login', pageUser.login);
 router.get('/logout', pageUser.logout);
 //激活
 router.get('/activate/:email/:pwdTime', pageUser.activate);
-/* books 书籍 */
-//增加书籍
+/* books 专辑 */
+//增加专辑
 router.post('/b/add', pageBook.add);
-//修改书籍
+//修改专辑
 router.post('/b/update', pageBook.update);
-//删除书籍
+//删除专辑
 router.post('/b/del', pageBook.remove);
-//查询书籍
+//查询专辑
 router.get('/editor', pageBook.getByUserID);
+//发表专辑
 /* article 文章 */
 //增加文章
 //修改文章
