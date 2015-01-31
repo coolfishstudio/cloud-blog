@@ -1,6 +1,7 @@
 *{margin: 0px;padding: 0px;list-style: none;}
 html,body{height: 100%;background-color:#F7F6F2;font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;min-width: 800px;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;-o-user-select: none;user-select: none;}
 a{text-decoration: none;color:#666;}
+input, textarea {padding: 10px;font-size: 12px;font-family: Arial;color: #606060;border: 1px solid #e3e3e3;background: #fff;width: 100%;border-radius: 3px;-webkit-border-radius: 3px;-moz-border-radius: 3px;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;}
 
 .fl-grid{overflow: hidden;width: 100%;}
 .fl-width-1-1,.fl-width-4-4,.fl-width-5-5,.fl-width-6-6,{width: 100%;float: left;}
@@ -117,7 +118,7 @@ footer .footer-r a:hover{color: #009966;}
 .right-content .editor-panel{width: 40%;height: 100%;overflow: hidden;position: fixed;z-index: 788;margin: 0;overflow: hidden;}
 .editor-panel .editor-books-panel{float: left;width:37.5%;height: 100%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;border-right: 1px #ccc solid;}
 .editor-panel .editor-articles-panel{float: left;width:62.5%;height: 100%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;border-right: 1px #ccc solid;}
-.right-content .editor-panel-box{overflow: hidden;margin-left: 40%;margin-bottom: 10px;padding-left: 24px;}
+.right-content .editor-panel-box{overflow: hidden;margin-left: 40%;margin-bottom: 10px;padding-left: 24px;padding-right: 6px;}
 
 .editor-books-panel .new-notebook{margin: 20px 0 0 0;padding: 10px 20px 10px 10px;border-top: 1px #ccc solid;}
 .new-notebook .create-notebook{font-size: 11px;font-weight: normal;line-height: 20px;font-style: italic;}
@@ -146,8 +147,21 @@ background-color: #009966;box-shadow: inset 1px 1px 2px rgba(0,0,0,0.35),0 1px 4
 .btn.btn-mainGreen{color: #fff;border-color: #009966;background: #009966;}
 .btn.btn-mainGreen:hover{background: #00CC99;border-color: #00CC99;}
 
-
-
+.editor-panel-box .editor-panel-title{padding: 10px 5px 5px 5px;}
+.editor-panel-box .editor-panel-title input[type="text"]{background: #F7F6F2;-webkit-appearance: none;
+outline: none;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+border: 0;
+padding: 0;
+height: 50px;
+font-size: 30px;
+overflow: auto;}
+.editor-panel-box .editor-panel-content{}
 
 
 
