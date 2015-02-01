@@ -118,7 +118,7 @@ footer .footer-r a:hover{color: #009966;}
 .right-content .editor-panel{width: 40%;height: 100%;overflow: hidden;position: fixed;z-index: 788;margin: 0;overflow: hidden;}
 .editor-panel .editor-books-panel{float: left;width:37.5%;height: 100%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;border-right: 1px #ccc solid;}
 .editor-panel .editor-articles-panel{float: left;width:62.5%;height: 100%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;border-right: 1px #ccc solid;}
-.right-content .editor-panel-box{overflow: hidden;margin-left: 40%;margin-bottom: 10px;padding-left: 24px;padding-right: 6px;}
+.right-content .editor-panel-box{overflow: hidden;margin-left: 40%;margin-bottom: 10px;padding-left: 18px;}
 
 .editor-books-panel .new-notebook{margin: 20px 0 0 0;padding: 10px 20px 10px 10px;border-top: 1px #ccc solid;}
 .new-notebook .create-notebook{font-size: 11px;font-weight: normal;line-height: 20px;font-style: italic;}
@@ -147,11 +147,73 @@ background-color: #009966;box-shadow: inset 1px 1px 2px rgba(0,0,0,0.35),0 1px 4
 .btn.btn-mainGreen{color: #fff;border-color: #009966;background: #009966;}
 .btn.btn-mainGreen:hover{background: #00CC99;border-color: #00CC99;}
 
-.editor-panel-box .editor-panel-title{padding: 10px 5px 5px 5px;}
-.editor-panel-box .editor-panel-title input[type="text"]{background: #F7F6F2;-webkit-appearance: none;outline: none;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;border: 0;padding: 0;height: 50px;font-size: 30px;overflow: auto;}
+.editor-panel-box .editor-panel-title{padding: 10px 5px 5px 5px;background: #fff;}
+.editor-panel-box .editor-panel-title input[type="text"]{background: #fff;-webkit-appearance: none;outline: none;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;border: 0;padding: 0;height: 50px;font-size: 30px;overflow: auto;}
 .editor-panel-box .editor-panel-content{}
+.editor-panel-box .editor-panel-content .toolbar{display: block;margin: 0px;list-style-type: none;border-bottom: 1px solid #d9d9d9;background-color: #ccc;}
+.editor-panel-box .editor-panel-content .toolbar .menu {
+position: relative;
+text-align: center;}
+.editor-panel-box .editor-panel-content .toolbar .menu:after {
+content: '';
+display: block;
+position: absolute;
+top: 8px;
+right: 5px;
+border-bottom: 0px solid transparent;
+border-top: 5px solid #999999;
+border-left: 4px solid transparent;
+border-right: 4px solid transparent;
+}
+.editor-panel-box .editor-panel-content .toolbar li{
+display: inline-block;
+cursor: pointer;
+text-align: center;
+cursor: pointer;line-height: 20px;font-size: 16px;
+font-weight: 100;
+}
+.editor-panel-box .editor-panel-content .toolbar a {
+padding: 11px 14px;
+display: inline-block;
+line-height: 17px;
+}
 
-
+.editor-panel-box .editor-panel-content .toolbar .menu .submenu {
+position: absolute;
+top: 0px;
+left: 0px;
+margin: 0px;
+padding: 0px;
+z-index: 1000;
+opacity: 0;
+transition: opacity 200ms ease-in-out, top 200ms ease;
+pointer-events: none;
+background: #262626;
+border: black;
+box-shadow: 5px 5px 10px rgba(0,0,0,0.6);
+}
+.editor-panel-box .editor-panel-content .toolbar .menu:hover .submenu{opacity:1;pointer-events:auto}
+.editor-panel-box .editor-panel-content .toolbar .menu .submenu li {
+display: block;
+width: 100%;
+text-align: center;
+}
+.editor-panel-box .editor-panel-content .toolbar .menu .submenu li:hover{
+	background: #464646;
+}
+.editor-panel-box .editor-panel-content .toolbar .menu .submenu li:hover a{
+	color: #fff;
+}
+.editor-panel-box .editor-panel-content .toolbar .menu .submenu li a{
+display: block;
+}
+.view-area {
+bottom: 0;
+padding: 30px;
+padding-bottom: 0;
+font-size: 17px;
+font-weight: 100;
+line-height: 30px;color: #2f2f2f;}
 
 /*弹窗*/
 .layer{ width:100%; height:100%; position:fixed; left:0; top:0; background:-webkit-radial-gradient(center center,70% 70%,rgba(255,255,255,0.3), rgba(0,0,0,1)); display:block;transition:1s all ease;z-index: 880;display: none;opacity:0;filter:alpha(opacity=0);}
