@@ -148,19 +148,7 @@ background-color: #009966;box-shadow: inset 1px 1px 2px rgba(0,0,0,0.35),0 1px 4
 .btn.btn-mainGreen:hover{background: #00CC99;border-color: #00CC99;}
 
 .editor-panel-box .editor-panel-title{padding: 10px 5px 5px 5px;}
-.editor-panel-box .editor-panel-title input[type="text"]{background: #F7F6F2;-webkit-appearance: none;
-outline: none;
--webkit-box-sizing: border-box;
--moz-box-sizing: border-box;
-box-sizing: border-box;
--webkit-box-shadow: none;
--moz-box-shadow: none;
-box-shadow: none;
-border: 0;
-padding: 0;
-height: 50px;
-font-size: 30px;
-overflow: auto;}
+.editor-panel-box .editor-panel-title input[type="text"]{background: #F7F6F2;-webkit-appearance: none;outline: none;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;border: 0;padding: 0;height: 50px;font-size: 30px;overflow: auto;}
 .editor-panel-box .editor-panel-content{}
 
 
