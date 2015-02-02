@@ -4,6 +4,7 @@ var tool = require('../util/tool');
 /* 增加书籍 */
 exports.insert = function(bookObj, callback){
 	bookObj._id = tool.generateUUID();
+	bookObj.released = false;
 	bookObj.createTimestamp = new Date().getTime();
 	bookObj.updateTimestamp = new Date().getTime();
 	bookColl.insert(bookObj, callback);

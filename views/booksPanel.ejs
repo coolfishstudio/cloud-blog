@@ -12,7 +12,7 @@
 			<% bookList.forEach(function(info, index){ %>
 			<li class="one-notebook">
 				<a href="javascript:;" class="notebook-name">
-					<i class="icon icon-notebook"></i>
+					<i class="icon-book"></i>
 					<span><%- info.name %></span>
 				</a>
 				<a href="javascript:;" class="notebook-edit" relBID="<%- info._id %>">
@@ -25,7 +25,7 @@
 			<% }); %>
 			<li class="one-notebook active">
 				<a href="javascript:;" class="notebook-name">
-					<i class="icon icon-notebook"></i>
+					<i class="icon-book"></i>
 					<span>未分类</span>
 				</a>
 			</li>  
@@ -35,7 +35,27 @@
 		</div>
 	</div>
 	<div class="editor-articles-panel">
-		asdasd
+		<div id="new-note">
+			<a href="javascript:;" class="new-note-link">
+				<i class="icon-pencil"></i>
+				<span class="win-text">+新建文章 </span>
+			</a> 
+		</div>
+		<ul class="notes">
+			<li class="one-note">
+				<i class="icon-file note-icon"></i>
+				<p class="abbreviate">x</p>
+				<p class="wordage win-text">字数: 1</p>
+				<a href="javascript:;" class="note-link-title">无标题文章</a>
+			</li>
+			<li class="one-note active">
+				<i class="icon-file note-icon"></i>
+				<p class="abbreviate">x</p>
+				<p class="wordage win-text">字数: 1</p>
+				<a href="javascript:;" class="note-link-title">无标题文章</a>
+			</li>
+			
+		</ul>
 	</div>
 </div>
 <script type="text/javascript">
@@ -103,8 +123,10 @@ $(function(){
 						'opacity' : '0'
 					}, 500, function(){
 						$('.one-notebook').removeClass('active');
-						_this.parent().parent().children('.one-notebook:first').addClass('active');
+						var _ul = _this.parent().parent();
 						_this.parent().remove();
+						_ul.children('.one-notebook:first').addClass('active');
+						
 					});
                 }else{
                     toastr.error(result.content);
@@ -139,7 +161,7 @@ $(function(){
 
 
 	function createBookHtml(info){
-		var html = '<li class="one-notebook active"><a href="javascript:;" class="notebook-name"><i class="icon icon-notebook"></i><span>' + info.name + '</span></a><a href="javascript:;" class="notebook-edit" relBID="' + info._id + '"><i class="icon-edit"></i></a><a href="javascript:;" class="notebook-delete" relBID="' + info._id + '"><i class="icon-trash"></i></a></li>';
+		var html = '<li class="one-notebook active"><a href="javascript:;" class="notebook-name"><i class="icon-notebook"></i><span>' + info.name + '</span></a><a href="javascript:;" class="notebook-edit" relBID="' + info._id + '"><i class="icon-edit"></i></a><a href="javascript:;" class="notebook-delete" relBID="' + info._id + '"><i class="icon-trash"></i></a></li>';
 		$('.list-notebook').prepend(html);
 	}
 });

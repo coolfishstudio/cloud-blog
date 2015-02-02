@@ -28,6 +28,7 @@ router.post('/b/update', pageBook.update);
 router.post('/b/del', pageBook.remove);
 //查询专辑
 router.get('/editor', pageBook.getByUserID);
+
 //发表专辑
 /* article 文章 */
 //增加文章
