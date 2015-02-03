@@ -156,6 +156,10 @@ background-color: #009966;box-shadow: inset 1px 1px 2px rgba(0,0,0,0.35),0 1px 4
 .editor-articles-panel .list-notes .one-note.active .abbreviate{text-shadow: 0 1px 0 rgba(0,0,0,0.5);}
 .editor-articles-panel .list-notes .one-note.active .wordage{display: block;}
 .editor-articles-panel .list-notes .one-note:hover{box-shadow: 0 1px 7px rgba(0,0,0,0.15);}
+.new-note-bottom{text-align: center;font-style: italic;font-size: 12px;line-height: 20px;}
+.new-note-bottom a{display: block;height: 30px;padding-top: 10px;vertical-align: middle;color: #999999;}
+
+
 
 .btn{border-radius: 4px;box-shadow: none;color: #3f3f3f;border: 1px solid #cccccc;border-color: #e6e6e6;text-shadow: none;display: inline-block;padding: 4px 12px;margin-bottom: 0;font-size: 14px;line-height: 20px;text-align: center;vertical-align: middle;cursor: pointer;border-color: #d5d5d5;}
 .btn:hover{border-color: #ddd;}
