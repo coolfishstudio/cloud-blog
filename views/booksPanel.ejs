@@ -42,7 +42,7 @@
 			</a> 
 		</div>
 		<ul class="list-notes">
-			<li class="one-note">
+			<!-- <li class="one-note">
 				<i class="icon-file note-icon"></i>
 				<p class="abbreviate">x</p>
 				<p class="wordage win-text">字数: 1</p>
@@ -54,9 +54,15 @@
 				<p class="wordage win-text">字数: 1</p>
 				<a href="javascript:;" class="note-link-title">无标题文章</a>
 			</li>
+			<li class="one-note">
+				<i class="icon-file note-icon"></i>
+				<p class="abbreviate">x</p>
+				<p class="wordage win-text">字数: 1</p>
+				<a href="javascript:;" class="note-link-title">无标题文章</a>
+			</li> -->
 			
 		</ul>
-		<div class="new-note-bottom">
+		<div class="new-note-bottom hide">
 			<a href="javascript:;">+在下方新建文章</a>
 		</div>
 	</div>
@@ -167,10 +173,25 @@ $(function(){
   //       });
 	});
 
+	//新增文章
+	$('.new-note-link').click(function(){
+		var _noteHtml = createNote();
+		$('.one-note').removeClass('active');
+		$('.list-notes').prepend(_noteHtml);
+	});
+
+
 
 	function createBookHtml(info){
-		var html = '<li class="one-notebook active"><a href="javascript:;" class="notebook-name"><i class="icon-notebook"></i><span>' + info.name + '</span></a><a href="javascript:;" class="notebook-edit" relBID="' + info._id + '"><i class="icon-edit"></i></a><a href="javascript:;" class="notebook-delete" relBID="' + info._id + '"><i class="icon-trash"></i></a></li>';
-		$('.list-notebook').prepend(html);
+		var _html = '<li class="one-notebook active"><a href="javascript:;" class="notebook-name" relBID="' + info._id + '"><i class="icon-book"></i><span>' + info.name + '</span></a><a href="javascript:;" class="notebook-edit" relBID="' + info._id + '"><i class="icon-edit"></i></a><a href="javascript:;" class="notebook-delete" relBID="' + info._id + '"><i class="icon-trash"></i></a></li>';
+		$('.list-notebook').prepend(_html);
 	}
+
+	function createNote(){
+		var _html = '<li class="one-note active"><i class="icon-file note-icon"></i><p class="abbreviate"></p><p class="wordage win-text">字数: 0</p><a href="javascript:;" class="note-link-title">无标题文章</a></li>';
+		return _html;
+	}
+
+
 });
 </script>

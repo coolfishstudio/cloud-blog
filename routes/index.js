@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pageUser = require('./pageUser');
 var pageBook = require('./pageBook');
-
+var pageArticle = require('./pageArticle');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -31,11 +31,14 @@ router.get('/editor', pageBook.getByUserID);
 
 //发表专辑
 /* article 文章 */
+
+
 //增加文章
 //修改文章
 //删除文章
 //查询文章
 //全部文章
+router.get('/b/:bookID', pageArticle.getByBookID);
 
 
 module.exports = router;
