@@ -35,21 +35,77 @@ exports.add = function(req, res){
         }
 	});
 };
+
 exports.update = function(req, res){
-	
+	if(!req.session || !req.session.user || !req.session.user._id){
+        return res.send({status: -2, content: '非法操作'});
+    }
+    var userID = req.session.user._id;
+	var articleID = req.params.articleID;
+	var title = req.body.title;
+	var content = req.body.content;
+	var info = {};
+	async.series({
+		updateArticle : function(done){
+			article.update(articleID,{
+				title : title,
+				content : content
+			},function(err, obj){
+                if(!err){
+                    info = obj;
+                    done();
+                }else{
+                    done(err);
+                }
+            });
+		}
+	},function(err){
+		if(err){
+            res.send({status: -1, content: err});
+        }else{
+            res.send({status: 0, content: info});
+        }
+	});
 };
+
 exports.remove = function(req, res){
 	
 };
+
 exports.getByID = function(req, res){
-	
+	if(!req.session || !req.session.user || !req.session.user._id){
+        return res.send({status: -2, content: '非法操作'});
+    }
+    var userID = req.session.user._id;
+	var articleID = req.params.articleID;
+	var info = {};
+	async.series({
+		getByArticleID : function(done){
+			article.getById(articleID,function(err, obj){
+                if(!err){
+                    info = obj;
+                    done();
+                }else{
+                    done(err);
+                }
+            });
+		}
+	},function(err){
+		if(err){
+            res.send({status: -1, content: err});
+        }else{
+            res.send({status: 0, content: info});
+        }
+	});
 };
+
 exports.getByBookID = function(req, res){
 	if(!req.session || !req.session.user || !req.session.user._id){
         return res.send({status: -2, content: '非法操作'});
     }
     var userID = req.session.user._id;
 	var bookID = req.params.bookID;
+	var info = {};
 	async.series({
 		getByBookID : function(done){
 			article.getByBookID({
@@ -57,7 +113,6 @@ exports.getByBookID = function(req, res){
 				userID : userID
 			},function(err, list){
                 if(!err){
-                    console.log(list);
                     info = list;
                     done();
                 }else{
@@ -72,7 +127,4 @@ exports.getByBookID = function(req, res){
             res.send({status: 0, content: info});
         }
 	});
-
-
-
 };

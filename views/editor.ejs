@@ -5,11 +5,11 @@
     	<%- include booksPanel %>
     	<div class="editor-panel-box">
             <div class="editor-panel-title">
-                <input type="text" value="" placeholder="未命名">
+                <input type="text" id="editor-title" value="未命名" placeholder="文章标题">
             </div>
             <div class="editor-panel-content">
-                <ul class="toolbar">
-                    <li class="menu">
+                <ul class="toolbar clear">
+                    <!-- <li class="menu">
                         <a class="submenu-cover icon-bold" herf="javascript:;">
                         </a>
                         <ul class="submenu">
@@ -30,7 +30,7 @@
                     <li>
                         <a class="icon-quote-left" herf="javascript:;">
                         </a>
-                    </li>
+                    </li> -->
                     <li class="fr">
                         <a class="icon-save" herf="javascript:;" id="saveNote">
                             发表文章
@@ -38,7 +38,7 @@
                     </li>
                     
                 </ul>
-                <div class="view-area" contenteditable="true" style="height: 576px;"></div>
+                <div class="view-area" contenteditable="true" style="height: 576px;" id="editor-content"></div>
 			</div>
 		</div>
   	</div><!-- rightCont end -->

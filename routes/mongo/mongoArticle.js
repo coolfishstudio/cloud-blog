@@ -24,5 +24,5 @@ exports.getById = function(articleID, callback){
 };
 /* 根据bookID查找文章 */ 
 exports.getByBookID = function(info, callback){
-	articleColl.find(info).sort({'updateTimestamp':-1}).toArray(callback);
+	articleColl.find(info).sort({'createTimestamp':-1}).toArray(callback);
 };
