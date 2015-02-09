@@ -34,9 +34,13 @@ router.get('/editor', pageBook.getByUserID);
 
 
 //增加文章
-//修改文章
+router.post('/p/add', pageArticle.add);
 //删除文章
+router.post('/p/del', pageArticle.remove);
 //查询文章
+router.get('/p/:articleID', pageArticle.getByID);
+//修改文章
+router.post('/p/:articleID', pageArticle.update);
 //全部文章
 router.get('/b/:bookID', pageArticle.getByBookID);
 
