@@ -23,6 +23,6 @@ exports.getById = function(articleID, callback){
 	articleColl.findOne({_id:articleID},callback);
 };
 /* 根据bookID查找文章 */ 
-exports.getByBookID = function(bookID, callback){
-	articleColl.find({bookID : bookID}).sort({'updateTimestamp':-1}).toArray(callback);
+exports.getByBookID = function(info, callback){
+	articleColl.find(info).sort({'updateTimestamp':-1}).toArray(callback);
 };

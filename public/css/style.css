@@ -21,6 +21,8 @@ input, textarea {padding: 10px;font-size: 12px;font-family: Arial;color: #606060
 
 .hide{display: none;}
 .show{display: block;}
+.fr{float: right;}
+.fl{float: left;}
 
 /* 左侧菜单栏 */
 .left-bar{z-index: 889;position: fixed;top: 0px;left: 0;width: 45px;min-height: 450px;background-color: #2f2f2f;border-collapse: separate;bottom: 0;box-shadow: 0 0 10px #1d1d1d inset;}

@@ -1,9 +1,9 @@
 var mongoArticle = require('../mongo/mongoArticle');
 
 /* 增删查改 */
-exports.insert = mongoBook.insert;
-exports.update = mongoBook.update;
-exports.remove = mongoBook.remove;
-exports.getById = mongoBook.getById;
+exports.insert = mongoArticle.insert;
+exports.update = mongoArticle.update;
+exports.remove = mongoArticle.remove;
+exports.getById = mongoArticle.getById;
 
-exports.getByBookID = mongoBook.getByBookID;
+exports.getByBookID = mongoArticle.getByBookID;

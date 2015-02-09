@@ -10,7 +10,7 @@
 		</div>
 		<ul class="list-notebook">
 			<% bookList.forEach(function(info, index){ %>
-			<li class="one-notebook">
+			<li class="one-notebook" relBID="<%- info._id %>">
 				<a href="javascript:;" class="notebook-name">
 					<i class="icon-book"></i>
 					<span><%- info.name %></span>
@@ -23,7 +23,7 @@
 				</a> 
 			</li>
 			<% }); %>
-			<li class="one-notebook active">
+			<li class="one-notebook active" relBID="0">
 				<a href="javascript:;" class="notebook-name">
 					<i class="icon-book"></i>
 					<span>未分类</span>
@@ -69,6 +69,8 @@
 </div>
 <script type="text/javascript">
 $(function(){
+	var BOOKID = '0';
+	var ARTICLEID = '0';
 	//显示创建专辑面板
 	$('.create-notebook').click(function(){
 		$('.add-notebook-box').show();
@@ -95,6 +97,7 @@ $(function(){
                 success: function(result){
                     if(0 == result.status){
                         toastr.success('添加专辑成功。');
+                        BOOKID = result.content._id;
                         $('#bookName').val('');
                         $('.add-notebook-box').animate({ 
 							'height' : '0px'
@@ -116,11 +119,27 @@ $(function(){
 	$('.list-notebook').delegate('li', 'click',function(){
 		$('.one-notebook').removeClass('active');
 		$(this).addClass('active');
+		BOOKID = $(this).attr('relBID');
+		$.ajax({
+            type: 'GET',
+            url: '/b/' + BOOKID,
+            data: {},
+            success: function(result){
+                if(0 == result.status){
+	            	console.log(result);
+	            	$('.list-notes').html('');
+	            	createNoteHtml(result.content);
+                }else{
+                    toastr.error(result.content);
+                }
+            }
+        });
 	});
 	//选中文章
 	$('.list-notes').delegate('li', 'click',function(){
 		$('.one-note').removeClass('active');
 		$(this).addClass('active');
+		ARTICLEID = $(this).attr('relPID');
 	});
 	//删除专辑
 	$('.list-notebook').delegate('.notebook-delete', 'click',function(){
@@ -175,19 +194,55 @@ $(function(){
 
 	//新增文章
 	$('.new-note-link').click(function(){
-		var _noteHtml = createNote();
-		$('.one-note').removeClass('active');
-		$('.list-notes').prepend(_noteHtml);
+		$.ajax({
+            type: 'POST',
+            url: '/p/add',
+            data: {bookID : BOOKID},
+            success: function(result){
+                if(0 == result.status){
+	            	var _noteHtml = createNote();
+					$('.one-note').removeClass('active');
+					$('.list-notes').prepend(_noteHtml);
+                }else{
+                    toastr.error(result.content);
+                }
+            }
+        });
 	});
+
+	function init(){
+		$.ajax({
+	        type: 'GET',
+	        url: '/b/' + BOOKID,
+	        data: {},
+	        success: function(result){
+	            if(0 == result.status){
+	            	console.log(result);
+	            	$('.list-notes').html('');
+	            	createNoteHtml(result.content);
+	            }else{
+	                toastr.error(result.content);
+	            }
+	        }
+	    });
+	}
+	init();
+	
 
 
 	function createBookHtml(info){
-		var _html = '<li class="one-notebook active"><a href="javascript:;" class="notebook-name" relBID="' + info._id + '"><i class="icon-book"></i><span>' + info.name + '</span></a><a href="javascript:;" class="notebook-edit" relBID="' + info._id + '"><i class="icon-edit"></i></a><a href="javascript:;" class="notebook-delete" relBID="' + info._id + '"><i class="icon-trash"></i></a></li>';
+		var _html = '<li class="one-notebook active" relBID="' + info._id + '"><a href="javascript:;" class="notebook-name" relBID="' + info._id + '"><i class="icon-book"></i><span>' + info.name + '</span></a><a href="javascript:;" class="notebook-edit" relBID="' + info._id + '"><i class="icon-edit"></i></a><a href="javascript:;" class="notebook-delete" relBID="' + info._id + '"><i class="icon-trash"></i></a></li>';
 		$('.list-notebook').prepend(_html);
 	}
-
+	function createNoteHtml(list){
+		var _html = '';
+		for(var i = 0; i < list.length; i++){
+			_html += '<li class="one-note ' + (i == 0 ? 'active' : '') + '" relPID="' + list[i]._id + '"><i class="icon-file note-icon"></i><p class="abbreviate"></p><p class="wordage win-text">字数: ' + list[i].content.length + '</p><a href="javascript:;" class="note-link-title">' + list[i].title + '</a></li>';
+		}
+		$('.list-notes').prepend(_html);
+	}
 	function createNote(){
-		var _html = '<li class="one-note active"><i class="icon-file note-icon"></i><p class="abbreviate"></p><p class="wordage win-text">字数: 0</p><a href="javascript:;" class="note-link-title">无标题文章</a></li>';
+		var _html = '<li class="one-note active"><i class="icon-file note-icon"></i><p class="abbreviate"></p><p class="wordage win-text">字数: 0</p><a href="javascript:;" class="note-link-title">未命名</a></li>';
 		return _html;
 	}
 
