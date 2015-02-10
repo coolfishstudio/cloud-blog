@@ -71,7 +71,7 @@
 $(function(){
 	var BOOKID = '0';
 	var ARTICLEID = '0';
-
+	var RELEASED = true;
 	//显示创建专辑面板
 	$('.create-notebook').click(function(){
 		$('.add-notebook-box').show();
@@ -236,7 +236,8 @@ $(function(){
             url: '/p/' + ARTICLEID,
             data: {
             	title : _title,
-            	content : _content
+            	content : _content,
+            	released : RELEASED
             },
             success: function(result){
                 if(0 == result.status){

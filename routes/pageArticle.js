@@ -44,12 +44,14 @@ exports.update = function(req, res){
 	var articleID = req.params.articleID;
 	var title = req.body.title;
 	var content = req.body.content;
+    var released = req.body.released || false;
 	var info = {};
 	async.series({
 		updateArticle : function(done){
 			article.update(articleID,{
 				title : title,
-				content : content
+				content : content,
+                released : released
 			},function(err, obj){
                 if(!err){
                     info = obj;
