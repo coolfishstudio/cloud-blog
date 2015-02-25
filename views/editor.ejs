@@ -9,52 +9,16 @@
             </div>
             <div class="editor-panel-content">
                 <ul class="toolbar clear">
-                    <!-- <li class="menu">
-                        <a class="submenu-cover icon-bold" herf="javascript:;">
+                    <li class="fr">
+                        <a class="icon-home" herf="javascript:;" id="gotoHome">
+                            返回首页
                         </a>
-                        <ul class="submenu">
-                            <li>
-                                <a class="icon-bold" herf="javascript:;">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="icon-italic" herf="javascript:;">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="icon-strikethrough" herf="javascript:;">
-                                </a>
-                            </li>
-                        </ul>
-                    </li> -->
-                    <!-- <li>
-                        <a class="icon-quote-left" herf="javascript:;">
-                        </a>
-                    </li> -->
+                    </li>
                     <li class="fr">
                         <a class="icon-save" herf="javascript:;" id="saveNote">
                             发表文章
                         </a>
                     </li>
-                    <!-- <li class="fr menu">
-                        <a class="icon-save" herf="javascript:;">
-                        </a>
-                        <ul class="submenu">
-                            <li>
-                                <a class="icon-bold" herf="javascript:;">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="icon-italic" herf="javascript:;">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="icon-strikethrough" herf="javascript:;">
-                                </a>
-                            </li>
-                        </ul>
-                    </li> -->
-                    
                 </ul>
                 <div class="view-area" contenteditable="true" style="height: 576px;" id="editor-content"></div>
 			</div>
@@ -63,5 +27,9 @@
     </body>
 </html>
     <script type="text/javascript">
-    
+        $(function(){
+            $('#gotoHome').click(function(){
+                window.location.href = '/';
+            });
+        });
     </script>

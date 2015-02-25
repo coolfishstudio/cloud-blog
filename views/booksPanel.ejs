@@ -1,13 +1,13 @@
 <div class="editor-panel">
 	<div class="editor-books-panel">
-		<div class="new-notebook">
+		<!-- <div class="new-notebook">
 			<a href="javascript:;" class="create-notebook"> +新建专辑</a> 
 			<div class="add-notebook-box">
 				<input placeholder="请输入专辑名..." type="text" id="bookName" class="notebook-input"> 
 				<a href="javascript:;" class="btn btn-mainGrey w48" id="cancel-create-notebook"> 取消 </a>
 				<a href="javascript:;" class="btn btn-mainGreen w48" id="sure－create-notebook"> 确定 </a>
 			</div>
-		</div>
+		</div> -->
 		<ul class="list-notebook">
 			<% bookList.forEach(function(info, index){ %>
 			<li class="one-notebook" relBID="<%- info._id %>">
@@ -220,6 +220,10 @@ $(function(){
 	            	var _noteHtml = createNote(result.content);
 					$('.one-note').removeClass('active');
 					$('.list-notes').prepend(_noteHtml);
+					ARTICLEID = result.content._id;
+					$('.editor-panel-box').show();
+					$('#editor-title').val('未命名');
+					$('#editor-content').html('');
                 }else{
                     toastr.error(result.content);
                 }
@@ -243,7 +247,10 @@ $(function(){
                 if(0 == result.status){
                 	console.log(result.content);
 	            	toastr.success('保存成功。');
-                }else{
+
+					$('.list-notes li[relPID="' + ARTICLEID + '"]').find('.note-link-title').html(_title);
+					$('.list-notes li[relPID="' + ARTICLEID + '"]').find('.win-text').html('字数: ' + _content.length);
+				}else{
                     toastr.error(result.content);
                 }
             }
@@ -262,6 +269,14 @@ $(function(){
 	            	console.log(result);
 	            	$('.list-notes').html('');
 	            	createNoteHtml(result.content);
+	            	if(result.content.length > 0){
+	            		ARTICLEID = result.content[0]._id;
+	            		$('.editor-panel-box').show();
+	            		$('#editor-title').val(result.content[0].title);
+						$('#editor-content').html(result.content[0].content);
+	            	}else{
+	            		$('.editor-panel-box').hide();
+	            	}
 	            }else{
 	                toastr.error(result.content);
 	            }
